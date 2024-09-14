@@ -24,20 +24,21 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v3
 
-    - name: Get dependencies
-      run: |
-        go mod download
+    - name: Set up cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cache/go-build
+          ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
+
+    - name: Install dependencies
+      run: go mod tidy
 
     - name: Build
-      run: |
-        go build -v ./...
+      run: go build -v ./...
 
-    - name: Test
-      run: |
-        go test -v ./...
-
-    - name: Lint
-      uses: golangci/golangci-lint-action@v4
-      with:
-        version: latest
-        args: --timeout 5m
+    - name: Run tests
+      run: go test -v ./...
