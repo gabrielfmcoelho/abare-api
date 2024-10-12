@@ -1,4 +1,4 @@
-package handler
+package user
 
 import (
 	"bytes"
@@ -12,8 +12,8 @@ import (
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 
-	"github.com/gabrielfmcoelho/abare-api.git/config"
-	"github.com/gabrielfmcoelho/abare-api.git/schemas"
+	"github.com/gabrielfmcoelho/abare-api/config"
+	"github.com/gabrielfmcoelho/abare-api/schemas"
 )
 
 func setupTestDB() *gorm.DB {

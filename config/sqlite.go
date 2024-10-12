@@ -3,7 +3,7 @@ package config
 import (
 	"os"
 
-	"github.com/gabrielfmcoelho/abare-api.git/schemas"
+	"github.com/gabrielfmcoelho/abare-api/schemas"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )

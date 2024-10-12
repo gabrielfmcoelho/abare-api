@@ -1,12 +1,12 @@
-package handler
+package user
 
 import (
 	"net/http"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/gabrielfmcoelho/abare-api.git/config"
-	"github.com/gabrielfmcoelho/abare-api.git/schemas"
+	"github.com/gabrielfmcoelho/abare-api/config"
+	"github.com/gabrielfmcoelho/abare-api/schemas"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
 )

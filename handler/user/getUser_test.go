@@ -1,4 +1,4 @@
-package handler
+package user
 
 import (
 	"net/http"
@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/gabrielfmcoelho/abare-api.git/schemas"
+	"github.com/gabrielfmcoelho/abare-api/schemas"
 )
 
 func TestGetUserHandler(t *testing.T) {

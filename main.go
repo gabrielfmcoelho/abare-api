@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/gabrielfmcoelho/abare-api.git/config"
-	"github.com/gabrielfmcoelho/abare-api.git/router"
+	"github.com/gabrielfmcoelho/abare-api/config"
+	"github.com/gabrielfmcoelho/abare-api/router"
 )
 
 var (

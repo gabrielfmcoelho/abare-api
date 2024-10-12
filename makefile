@@ -1,8 +1,22 @@
+.PHONY: default run build test docs clean
 
+APP_NAME=Abare
 
-dev:
-	go run main.go
+default: docs run
 
-prod:
-	go build -o bin/main main.go
-	./bin/main
+run:
+	@go run main.go
+
+build:
+	@go build -o $(APP_NAME) main.go
+
+tests:
+	@go test ./ ...
+
+docs:
+	@swag init
+
+clean:
+	@rm -f $(APP_NAME)
+	@rm -rf docs
+
