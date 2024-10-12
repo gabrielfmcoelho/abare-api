@@ -5,6 +5,8 @@ go 1.23.1
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.10.0
+	github.com/mvrilo/go-redoc v0.1.5
+	github.com/mvrilo/go-redoc/gin v0.0.0-20240120021923-101384bb3acd
 	github.com/stretchr/testify v1.9.0
 	github.com/swaggo/files v1.0.1
 	github.com/swaggo/gin-swagger v1.6.0
