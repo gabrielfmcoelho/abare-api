@@ -2,7 +2,6 @@ package traits
 
 import (
 	"net/http"
-
 	"github.com/gabrielfmcoelho/abare-api/handler"
 	"github.com/gabrielfmcoelho/abare-api/schemas"
 	"github.com/gin-gonic/gin"
@@ -35,7 +34,7 @@ func UpdaterTraitsHandler(ctx *gin.Context) {
 	}
 	// Update traits
 	if request.IsValid != nil {
-		traits.IsValid = request.IsValid
+		traits.IsValid = *request.IsValid
 	}
 
 	if request.Value != "" {

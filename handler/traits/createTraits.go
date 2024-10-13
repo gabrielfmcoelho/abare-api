@@ -23,7 +23,7 @@ func CreateTraitsHandler(ctx *gin.Context) {
 		IsValid: *request.IsValid,
 		Value:   request.Value,
 		ChildID: request.ChildID,
-		TagID:  *request.TagID,
+		TagID:  request.TagID,
 	}
 	if err := handler.Db.Create(&traits).Error; err != nil {
 		handler.Logger.Errorf("error creating traits: %v", err.Error())

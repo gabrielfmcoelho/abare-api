@@ -16,7 +16,7 @@ type CreateTraitsRequest struct {
 	IsValid *bool `json:"is_valid"`
     Value   string `json:"value"`
     ChildID uint `json:"child_id"`
-    TagID  *schemas.Tag `json:"tag_id"`
+    TagID  []schemas.Tag `json:"tag_id"`
 }
 
 func (r *CreateTraitsRequest) Validate() error {
@@ -44,7 +44,7 @@ type UpdateTraitsRequest struct {
 	IsValid *bool `json:"is_valid"`
     Value   string `json:"value"`
     ChildID uint `json:"child_id"`
-    TagID  *schemas.Tag `json:"tag_id"`
+    TagID  []schemas.Tag `json:"tag_id"`
 }
 
 func (r *UpdateTraitsRequest) Validate() error {
