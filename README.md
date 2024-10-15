@@ -1,5 +1,4 @@
 # ABARÉ API
----
 
 ## About the project
 
@@ -91,6 +90,8 @@ make docs
 ```
 
 This will generate the Swagger documentation, which can be accessed through the /docs/ route once the API is running.
+
+![Documentation page screenshot](data/assets/static/redoc-documentation-page.png)
 
 ## How to run
 
