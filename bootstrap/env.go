@@ -39,6 +39,11 @@ func NewEnv() *Env {
 		log.Fatal("Environment can't be loaded: ", err)
 	}
 
+	//print all environment variables loaded
+	for key, value := range viper.AllSettings() {
+		log.Printf("Environment variable: %s = %v", key, value)
+	}
+
 	if env.AppEnv == "development" {
 		log.Println("Environment data: ", env)
 		log.Println("The App is running in development environment")
