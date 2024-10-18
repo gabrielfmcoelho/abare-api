@@ -34,8 +34,8 @@ func NewEnv() *Env {
 	}
 
 	err = viper.Unmarshal(&env)
-	if err != nil {
-		log.Fatal("Environment can't be loaded: ", err)
+	if err != nil || env.AppEnv == "" {
+		log.Fatal("Environment can't be loaded: ")
 	}
 
 	if env.AppEnv == "development" {
