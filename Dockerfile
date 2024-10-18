@@ -20,10 +20,10 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build -o server cmd/main.go
+RUN go build -o abare-server cmd/main.go
 
 FROM scratch AS runner
-COPY --from=builder /app/server /server
+COPY --from=builder /app/abare-server /abare-server
 
 ENV APP_ENV=${APP_ENV}
 ENV SERVER_ADDRESS=${SERVER_ADDRESS}
@@ -40,4 +40,8 @@ ENV REFRESH_TOKEN_EXPIRY_HOUR=${REFRESH_TOKEN_EXPIRY_HOUR}
 ENV ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
 ENV REFRESH_TOKEN_SECRET=${REFRESH_TOKEN_SECRET}
 
-CMD ["/server"]
+# print APP_ENV to check if it is set and await for 10 seconds
+RUN echo $APP_ENV && sleep 5
+
+
+CMD ["/abare-server"]

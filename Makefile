@@ -1,6 +1,6 @@
 .PHONY: default run build test docs clean
 
-APP_NAME=Abare
+APP_NAME=abare-server
 
 default: docs run
 
@@ -8,7 +8,7 @@ run:
 	@go run cmd/main.go
 
 build:
-	@go build -o $(APP_NAME) main.go
+	@go build -o $(APP_NAME) cmd/main.go
 
 tests:
 	@go test ./ ...
