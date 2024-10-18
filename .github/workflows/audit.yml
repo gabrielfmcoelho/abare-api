@@ -41,14 +41,3 @@ jobs:
 
     - name: Run tests
       run: go test -race -vet=off ./...
-
-  deploy:
-    needs: audit
-    # only if branch is main
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-20.04
-    steps:
-    - uses: actions/checkout@v2
-  
-    - name: Trigger deploy
-      run: curl -X POST https://inovadata.tech/api/deploy/cqHRfzTUZjJ5ZgVOJ79mk
