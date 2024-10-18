@@ -28,17 +28,13 @@ func NewEnv() *Env {
 
 	err := viper.ReadInConfig()
 	if err != nil {
-		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
-			log.Println("No .env file found")
-			log.Println("Searching for environment variables on the system")
-			viper.AutomaticEnv()
-		} else {
-			log.Fatal("Failed to read the .env file: ", err)
-		}
+		log.Println("No .env file found")
+		log.Println("Searching for environment variables on the system")
+		viper.AutomaticEnv()
 	}
 
 	err = viper.Unmarshal(&env)
-	if err != nil || env.AppEnv == "" {
+	if err != nil {
 		log.Fatal("Environment can't be loaded: ", err)
 	}
 
