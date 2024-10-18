@@ -6,6 +6,6 @@ RUN go mod download
 COPY . .
 RUN go build -o server cmd/main.go
 
-FROM scratch
+FROM scratch AS runner
 COPY --from=builder /app/server /server
 CMD ["/server"]
