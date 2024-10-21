@@ -17,15 +17,20 @@ ARG ACCESS_TOKEN_SECRET
 ARG REFRESH_TOKEN_SECRET
 
 WORKDIR /app
-COPY go.mod go.sum ./
-RUN go mod download
-COPY . .
 # for sqlite3 dependency
 RUN apk add --no-cache gcc musl-dev 
+COPY go.mod go.sum ./
+RUN go mod download
+# MAKE SWAGGER DOCS WITH swag
+RUN go install github.com/swaggo/swag/cmd/swag@latest
+COPY . .
+RUN swag init -g cmd/main.go
 RUN go build -ldflags='-s -w -extldflags "-static"' -o abare-server cmd/main.go
 
 FROM scratch AS runner
 COPY --from=builder /app/abare-server /abare-server
+COPY --from=builder /app/docs/swagger.json /docs/swagger.json
+COPY --from=builder /app/docs/swagger.yaml /docs/swagger.yaml
 
 ENV APP_ENV=${APP_ENV}
 ENV SERVER_ADDRESS=${SERVER_ADDRESS}
