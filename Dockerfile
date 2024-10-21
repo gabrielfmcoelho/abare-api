@@ -1,4 +1,4 @@
-FROM golang:1.23 AS builder
+FROM golang:1.23-alpine AS builder
 
 ARG CGO_ENABLED=1
 ARG APP_ENV
@@ -20,7 +20,9 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build -o abare-server cmd/main.go
+# for sqlite3 dependency
+RUN apk add --no-cache gcc musl-dev 
+RUN go build -ldflags='-s -w -extldflags "-static"' -o abare-server cmd/main.go
 
 FROM scratch AS runner
 COPY --from=builder /app/abare-server /abare-server
